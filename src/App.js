@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { Menu } from "antd";
 import "./App.css";
-// import "ace-builds/src-noconflict/mode-java";
-// import "ace-builds/src-noconflict/theme-github";
-
-import AceEditor from "react-ace";
-
 import Stage1 from "./Stage1";
 import Stage1Solution from "./Stage1Solution";
 import Stage2 from "./Stage2";
@@ -73,9 +68,6 @@ const contentList = [
 const App = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { Component, title, tips } = contentList[currentIndex];
-  function onChange(newValue) {
-    console.log("change", newValue);
-  }
   return (
     <div className="wrap">
       <Menu
@@ -93,25 +85,6 @@ const App = () => {
         <h1>{title}</h1>
         <h4>{tips}</h4>
         <Component />
-        <AceEditor
-          placeholder="Placeholder Text"
-          mode="javascript"
-          theme="monokai"
-          name="blah2"
-          onChange={onChange}
-          fontSize={14}
-          showPrintMargin={true}
-          showGutter={true}
-          highlightActiveLine={true}
-          value={`${Component}`}
-          setOptions={{
-            enableBasicAutocompletion: false,
-            enableLiveAutocompletion: false,
-            enableSnippets: false,
-            showLineNumbers: true,
-            tabSize: 2,
-          }}
-        />
       </div>
     </div>
   );
